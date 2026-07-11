@@ -7,6 +7,7 @@
   --border: #deded8;
   --muted-foreground: #686864;
   --accent: #6d4aff;
+  --grid-line: color-mix(in srgb, var(--foreground) 16%, transparent);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,6 +18,7 @@
     --border: #252832;
     --muted-foreground: #9a9da7;
     --accent: #9b7cff;
+    --grid-line: color-mix(in srgb, var(--foreground) 18%, transparent);
   }
 }
 
