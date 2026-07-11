@@ -1,7 +1,25 @@
 import Link from "next/link";
-
 import { Container } from "@/components/ui/container";
 import { siteConfig } from "@/lib/site-config";
+
+const primaryNavigation = [
+  {
+    label: "Work",
+    href: "/work",
+  },
+  {
+    label: "Labs",
+    href: "/labs",
+  },
+  {
+    label: "Writing",
+    href: "/writing",
+  },
+  {
+    label: "About",
+    href: "/about",
+  },
+] as const;
 
 export function SiteHeader() {
   return (
@@ -29,14 +47,31 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        <a
-          href={siteConfig.links.github}
-          target="_blank"
-          rel="noreferrer"
-          className="text-sm text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]"
-        >
-          GitHub
-        </a>
+        <div className="flex items-center gap-6">
+          <nav
+            aria-label="Primary navigation"
+            className="hidden items-center gap-5 md:flex"
+          >
+            {primaryNavigation.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-sm text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          <a
+            href={siteConfig.links.github}
+            target="_blank"
+            rel="noreferrer"
+            className="text-sm text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]"
+          >
+            GitHub
+          </a>
+        </div>
       </Container>
     </header>
   );
